@@ -6,10 +6,10 @@ const LandingHero = () => {
         <div className='flex my-20 flex-col items-center justify-center max-w-screen-xl w-screen mx-auto'>
 
 
-            <h3 className='text-xl md:text-3xl font-bold block my-2'>Elevate Your Learning Journey with</h3>
-            <h1 className='text-5xl md:text-7xl bg-gradient-to-tr from-blue-500 to-indigo-700 bg-clip-text text-transparent font-bold my-2'>VirtualMentor</h1>
+            <h3 className='text-2xl md:text-4xl font-bold block my-2'>Elevate Your Learning Journey with</h3>
+            <h1 className='text-6xl md:text-7xl bg-gradient-to-tr from-blue-500 to-indigo-700 bg-clip-text text-transparent font-bold my-2'>VirtualMentor</h1>
             <h2 className='text-3xl md:text-4xl font-bold my-2'>Your Study BFF!</h2>
-            <div className="mt-2 text-center text-slate-200">
+            <div className="mt-2 text-sm text-center text-slate-200">
                 Explore Limitless Learning with Our Open-Source, AI Companion: Study Any Subject, Anytime!
             </div>
             <div className="mt-12">
