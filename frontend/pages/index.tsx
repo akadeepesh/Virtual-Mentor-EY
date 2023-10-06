@@ -1,16 +1,14 @@
-import { UserButton } from "@clerk/nextjs";
-
+import HomeNav from "@/components/HomeNav";
 const HomePage = () => {
   return (
-    <>
-      <header>
-        <UserButton afterSignOutUrl="/" />
-      </header>
-      <div>
-        Initial Screen
+    <div className="flex justify-center">
+      <div className="mx-auto w-screen max-w-screen-xl">
+        <HomeNav />
+        <div>
+          Initial Screen Content
+        </div>
       </div>
-
-    </>
+    </div>
   );
 }
 
