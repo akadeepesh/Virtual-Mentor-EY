@@ -45,7 +45,7 @@ const Profile = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Username</FormLabel>
-                    <FormControl>
+                    <FormControl className='w-40'>
                       <Input placeholder="shadcn" {...field} />
                     </FormControl>
                     <FormDescription>
