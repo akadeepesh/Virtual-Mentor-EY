@@ -1,13 +1,13 @@
 import React from 'react';
 import HomeNav from '@/components/HomeNav';
-import ProfileHero from "@/components/ProfileHero";
+import ProfileEdit from "@/components/ProfileEdit";
 
 const Profile = () => {
   return (
     <div className="">
         <HomeNav />
         <hr />
-        <ProfileHero/>
+        <ProfileEdit/>
     </div>
   )
 }

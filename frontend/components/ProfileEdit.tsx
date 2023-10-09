@@ -45,7 +45,7 @@ const formSchema = z.object({
   }),
 })
 
-const ProfileHero = () => {
+const ProfileEdit = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -65,6 +65,18 @@ const ProfileHero = () => {
       }
       type FormFieldName = "FullName" | "Email" | "ContactNumber" | "Education" | "CareerGoals" | "Interests" | "Skills" | "WorkExperience" | "LearningMethods";
 
+      const placeholders = {
+        FullName: "Please enter your full name here",
+        Email: "Please enter your email here",
+        ContactNumber: "Please enter your contact number here",
+        Education: "Please enter your educational background here",
+        CareerGoals: "Please enter your career goals here",
+        Interests: "Please enter your interests here",
+        Skills: "Please enter your skills here",
+        WorkExperience: "Please enter your work experience here",
+        LearningMethods: "Please enter your preferred learning methods here"
+      };
+      
       const renderField = (name: FormFieldName, label: string, description: string) => (
         <div className="w-full md:w-1/2 px-2 mb-4">
           <FormField
@@ -74,7 +86,7 @@ const ProfileHero = () => {
                 <FormItem>
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
-                    <Input placeholder={name} {...field} />
+                    <Input className=' focus:bg-transparent' placeholder={placeholders[name]} {...field} />
                   </FormControl>
                   <FormDescription>
                     {description}
@@ -85,10 +97,10 @@ const ProfileHero = () => {
             />
         </div>
       )
-      
+            
       return (
         <div className='mt-10 flex justify-center items-center min-h-screen text-white'>
-          <div className="w-full md:max-w-4xl p-8 mx-auto bg-gray-900 rounded-xl shadow-md space-y-4 text-gray-900">
+          <div className="w-full md:max-w-4xl p-8 mx-auto bg-gray-900 rounded-xl shadow-md space-y-4 text-white">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <div className="flex flex-wrap">
@@ -113,4 +125,4 @@ const ProfileHero = () => {
       )
 }      
 
-export default ProfileHero
+export default ProfileEdit
