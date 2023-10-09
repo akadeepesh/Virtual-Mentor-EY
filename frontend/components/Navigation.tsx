@@ -51,8 +51,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu className="text-white">
-      <NavigationMenuList>
+    <NavigationMenu className="text-primary">
+      <NavigationMenuList className="">{/*flex-col md:flex gap-5*/}
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
