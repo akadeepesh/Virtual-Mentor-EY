@@ -63,7 +63,7 @@ const ProfileEdit = () => {
       function onSubmit() {
         console.log("form submitted")
       }
-      type FormFieldName = "FullName" | "Email" | "ContactNumber" | "Education" | "CareerGoals" | "Interests" | "Skills" | "WorkExperience" | "LearningMethods";
+      type FormFieldName = "FullName" | "Email" | "Education" | "CareerGoals" | "Interests" | "Skills" | "WorkExperience" | "LearningMethods";
 
       const placeholders = {
         FullName: "Please enter your full name here",
@@ -86,7 +86,7 @@ const ProfileEdit = () => {
                 <FormItem>
                   <FormLabel>{label}</FormLabel>
                   <FormControl>
-                    <Input className=' focus:bg-transparent' placeholder={placeholders[name]} {...field} />
+                    <Input className='focus:bg-transparent' placeholder={placeholders[name]} {...field} />
                   </FormControl>
                   <FormDescription>
                     {description}
@@ -99,8 +99,8 @@ const ProfileEdit = () => {
       )
             
       return (
-        <div className='mt-10 flex justify-center items-center min-h-screen text-white'>
-          <div className="w-full md:max-w-4xl p-8 mx-auto bg-gray-900 rounded-xl shadow-md space-y-4 text-white">
+        <div className='mt-10 flex justify-center items-center min-h-screen '>
+          <div className="w-full md:max-w-6xl p-8 mx-auto bg-gradient-to-tr from-blue-500 to-indigo-700 rounded-xl shadow-md space-y-4 text-white">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <div className="flex flex-wrap">

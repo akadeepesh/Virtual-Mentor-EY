@@ -46,8 +46,8 @@ const FAQ = () => {
                         Click here to open an issue on GitHub.
                     </Link>
                     <br />
-                    Alternatively, you can also email me at <Link className="underline underline-offset-4" href="mailto:deepesh.kumar.ug21@nsut.ac.in" target="_blank" passHref>
-                        My-Mail
+                    Alternatively, you can also email me <Link className="underline underline-offset-4" href="mailto:deepesh.kumar.ug21@nsut.ac.in" target="_blank" passHref>
+                        here
                     </Link>{' '}
                     for any queries, reports or feedback.
                 </span>
