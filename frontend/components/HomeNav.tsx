@@ -7,7 +7,7 @@ import {FaTimes, FaBars} from 'react-icons/fa';
 const HomeNav = () => {
   const [nav, setNav] = useState(false);
   return (
-    <header className='flex md:mt-4 justify-between h-20 items-center p-4 md:mx-auto max-w-screen-xl w-screen'>
+    <header className='flex md:mt-4 justify-between h-20 items-center p-4 md:mx-auto'>
       <a href="/" className="font-bold text-xl md:text-2xl mx-1 md:mx-4 hover:text-slate-200 duration-200">VirtualMentor</a>
       <div className="hidden md:flex justify-center items-center">
         <div className="flex flex-row gap-8">

@@ -3,7 +3,7 @@ import { FiEdit } from "react-icons/fi";
 
 const ProfileHero = () => {
   return (
-    <div className='mt-10 flex justify-center min-h-screen'>
+    <div className='mt-10 flex min-h-screen'>
       <div className="w-full md:max-w-6xl p-8 mx-auto bg-secondary rounded-xl shadow-md space-y-4 text-primary relative">
         <div className="absolute top-0 right-0 p-2"><FiEdit size={25}/></div>
         <h2>Full Name: Deepesh Kumar</h2>

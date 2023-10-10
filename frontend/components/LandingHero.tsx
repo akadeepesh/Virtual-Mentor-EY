@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const LandingHero = () => {
     return (
-        <div className='flex my-20 flex-col items-center justify-center max-w-screen-xl w-screen mx-auto'>
+        <div className='flex my-20 flex-col items-center'>
 
 
             <h3 className='text-2xl md:text-4xl font-bold block my-2'>Elevate Your Learning Journey with</h3>

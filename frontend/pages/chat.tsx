@@ -45,7 +45,7 @@ export default function Pg() {
         }
     }, [user, userDataFetched]);
 
-    return (<div className="min-h-[90vh] flex flex-col justify-between">
+    return (<div className="min-h-[90vh] flex flex-col justify-between mt-16">
         <NextSeo
             title="VirtualMentor - Chat with DeCoder"
             description="VirtualMentor is an AI powered language learning platform that helps you learn faster."
