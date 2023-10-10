@@ -12,7 +12,7 @@ const ProfileHero = () => {
         <h2>Education Background: Bachelor's in Computer Science</h2>
         <h2>Interests: Coding, Reading, Travelling</h2>
         <h2>Skills: React, Node.js, Python</h2>
-        <h2>Work Experience: 3 years at XYZ Corp.</h2>
+        <h2>Work Experience: 3 years at XYZ Corp</h2>
       </div>
     </div>
   )
