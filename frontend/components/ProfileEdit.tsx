@@ -68,7 +68,6 @@ const ProfileEdit = () => {
   const placeholders = {
     FullName: "Please enter your full name here",
     Email: "Please enter your email here",
-    ContactNumber: "Please enter your contact number here",
     Education: "Please enter your educational background here",
     CareerGoals: "Please enter your career goals here",
     Interests: "Please enter your interests here",
