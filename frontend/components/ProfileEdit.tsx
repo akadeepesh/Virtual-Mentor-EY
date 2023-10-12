@@ -29,7 +29,7 @@ const formSchema = z.object({
     message: "Please enter your Educational background.",
   }),
   CareerGoals: z.string().min(2, {
-    message: "Please enter your career goals.",
+    message: "Please enter your career goals",
   }),
   Interests: z.string().min(2, {
     message: "Please enter your Interests.",
