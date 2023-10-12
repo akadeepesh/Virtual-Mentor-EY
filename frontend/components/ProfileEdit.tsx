@@ -57,13 +57,12 @@ const ProfileEdit = () => {
       Interests: "",
       Skills: "",
       WorkExperience: "",
-      LearningMethods: "",
     },
   })
   function onSubmit() {
     console.log("form submitted")
   }
-  type FormFieldName = "FullName" | "Email" | "Education" | "CareerGoals" | "Interests" | "Skills" | "WorkExperience" | "LearningMethods";
+  type FormFieldName = "FullName" | "Email" | "Education" | "CareerGoals" | "Interests" | "Skills" | "WorkExperience";
 
   const placeholders = {
     FullName: "Please enter your full name here",
@@ -73,7 +72,6 @@ const ProfileEdit = () => {
     Interests: "Please enter your interests here",
     Skills: "Please enter your skills here",
     WorkExperience: "Please enter your work experience here",
-    LearningMethods: "Please enter your preferred learning methods here"
   };
 
   const renderField = (name: FormFieldName, label: string, description: string) => (
@@ -113,7 +111,6 @@ const ProfileEdit = () => {
             {renderField("Interests", "Interests", "Enter your Interests.")}
             {renderField("Skills", "Skills", "Enter your Skills.")}
             {renderField("WorkExperience", "Work Experience", "Enter your work experience.")}
-            {renderField("LearningMethods", "Learning Methods", "Enter your preferred learning methods.")}
             <div className="flex justify-center">
               <Button type="submit">Submit</Button>
             </div>
