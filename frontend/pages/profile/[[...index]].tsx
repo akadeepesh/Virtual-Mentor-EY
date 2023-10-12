@@ -12,4 +12,3 @@ const CompletedProfile = () => {
   )
 }
 export default CompletedProfile
-
