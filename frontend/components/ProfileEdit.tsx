@@ -41,7 +41,7 @@ const formSchema = z.object({
     message: "Please enter your work experience.",
   }),
   LearningMethods: z.string().min(2, {
-    message: "Please enter your preferred learning methods.",
+    message: "Please enter your preferred learning method",
   }),
 })
 
