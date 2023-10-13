@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -12,7 +13,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-import React from 'react'
 const Edit = () => {
     return (
       <Sheet>
@@ -39,14 +39,14 @@ const Edit = () => {
               </Label>
               <Input id="username" value="@deepesh001" className="col-span-3" />
             </div>
-          </div>  
+          </div>
           <SheetFooter>
             <SheetClose asChild>
               <Button type="submit">Save changes</Button>
-            </SheetClose>  
-          </SheetFooter>  
-        </SheetContent>  
-      </Sheet>    
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
   )
 }  
 export default Edit
