@@ -49,9 +49,9 @@ export default function Pg() {
         <NextSeo
             title="VirtualMentor - Chat with DeCoder"
             description="VirtualMentor is an AI powered language learning platform that helps you learn faster."
-            canonical="https://VirtualMentor.ishn.codes/"
+            canonical="https://github.com/akadeepesh/Virtual-Mentor-EY"
             openGraph={{
-                url: 'https://VirtualMentor.ishn.codes/',
+                url: 'https://github.com/akadeepesh/Virtual-Mentor-EY',
                 title: 'VirtualMentor',
                 description: 'VirtualMentor is an AI powered language learning platform that helps you learn faster.',
                 images: [
@@ -64,11 +64,6 @@ export default function Pg() {
                     },
                 ],
                 siteName: 'VirtualMentor',
-            }}
-            twitter={{
-                handle: '@ishnbedi',
-                site: '@ishnbedi',
-                cardType: 'summary_large_image',
             }}
         />
         <ScrollArea className="h-[80vh] w-full p-4 no-scrollbar scroll-auto justify-end flex flex-col overflow-y-auto">

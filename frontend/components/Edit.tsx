@@ -13,12 +13,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-const Coloumn = (name: string , value: string, Title : string) => (
+const Coloumn = (id: string , value: string, Title : string) => (
   <div className="grid grid-cols-4 items-center gap-4">
-    <Label htmlFor={name} className="text-right">
+    <Label htmlFor={id} className="text-right">
       {Title}
     </Label>
-    <Input id={name} value={value} className="col-span-3" />
+    <Input id={id} value={value} className="col-span-3" />
   </div>
 )
 
