@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form";
 
@@ -71,8 +71,7 @@ const ProfileHero = () => {
     Skills: "I don't have any",
     WorkExperience: "Null",
   };
-  const [isEditable, setIsEditable] = useState(false);
-  const renderField = (name: FormFieldName, label: string, description: string) => (
+  const renderField = (name: FormFieldName, label: string) => (
     <div className="w-full md:w-1/2 px-2 mb-4">
       <FormField
         control={form.control}
@@ -81,11 +80,8 @@ const ProfileHero = () => {
           <FormItem>
             <FormLabel>{label}</FormLabel>
             <FormControl>
-              <Input placeholder={Values[name]} {...field} readOnly={!isEditable} />
+              <Input placeholder={Values[name]} {...field} readOnly={true} />
             </FormControl>
-            <FormDescription>
-              {description}
-            </FormDescription>
             <FormMessage />
           </FormItem>
         )}
@@ -94,21 +90,21 @@ const ProfileHero = () => {
   )
 
   return (
-    <div className='mt-10 flex justify-center items-center min-h-screen'>
+    <div className='mt-10 flex justify-center min-h-screen'>
       <div className="w-full md:max-w-6xl p-8 mx-auto bg-secondary rounded-xl shadow-md space-y-4 text-primary">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-16">
             <div className="flex flex-wrap">
-              {renderField("FullName", "Full Name", "Enter your full name.")}
-              {renderField("Email", "Email", "Enter your Email address.")}
+              {renderField("FullName", "Full Name")}
+              {renderField("Email", "Email")}
             </div>
             <div className="flex flex-wrap">
-              {renderField("CareerGoals", "Career Goals", "Enter your career goals.")}
-              {renderField("Education", "Education", "Enter your Educational background.")}
+              {renderField("CareerGoals", "Career Goals")}
+              {renderField("Education", "Education")}
             </div>
-            {renderField("Interests", "Interests", "Enter your Interests.")}
-            {renderField("Skills", "Skills", "Enter your Skills.")}
-            {renderField("WorkExperience", "Work Experience", "Enter your work experience.")}
+            {renderField("Interests", "Interests")}
+            {renderField("Skills", "Skills")}
+            {renderField("WorkExperience", "Work Experience")}
           </form>
         </Form>
       </div>

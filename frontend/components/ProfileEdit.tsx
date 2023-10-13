@@ -74,7 +74,7 @@ const ProfileEdit = () => {
     WorkExperience: "Please enter your work experience here",
   };
 
-  const renderField = (name: FormFieldName, label: string, description: string) => (
+  const renderField = (name: FormFieldName, label: string) => (
     <div className="w-full md:w-1/2 px-2 mb-4">
       <FormField
         control={form.control}
@@ -85,10 +85,6 @@ const ProfileEdit = () => {
             <FormControl>
               <Input placeholder={placeholders[name]} {...field} />
             </FormControl>
-            <FormDescription>
-              {description}
-            </FormDescription>
-            <FormMessage />
           </FormItem>
         )}
       />
@@ -96,23 +92,23 @@ const ProfileEdit = () => {
   )
 
   return (
-    <div className='mt-10 flex justify-center items-center min-h-screen'>
+    <div className='mt-10 flex justify-center min-h-screen'>
       <div className="w-full md:max-w-6xl p-8 mx-auto bg-secondary rounded-xl shadow-md space-y-4 text-primary">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-16">
             <div className="flex flex-wrap">
-              {renderField("FullName", "Full Name", "Enter your full name.")}
-              {renderField("Email", "Email", "Enter your Email address.")}
+              {renderField("FullName", "Full Name")}
+              {renderField("Email", "Email")}
             </div>
             <div className="flex flex-wrap">
-              {renderField("CareerGoals", "Career Goals", "Enter your career goals.")}
-              {renderField("Education", "Education", "Enter your Educational background.")}
+              {renderField("CareerGoals", "Career Goals")}
+              {renderField("Education", "Education")}
             </div>
-            {renderField("Interests", "Interests", "Enter your Interests.")}
-            {renderField("Skills", "Skills", "Enter your Skills.")}
-            {renderField("WorkExperience", "Work Experience", "Enter your work experience.")}
+            {renderField("Interests", "Interests")}
+            {renderField("Skills", "Skills")}
+            {renderField("WorkExperience", "Work Experience")}
             <div className="flex justify-center">
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Save</Button>
             </div>
           </form>
         </Form>
