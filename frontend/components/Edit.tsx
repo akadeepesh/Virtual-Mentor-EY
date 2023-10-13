@@ -13,11 +13,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
+const Coloumn = (name: string , value: string, Title : string) => (
+  <div className="grid grid-cols-4 items-center gap-4">
+    <Label htmlFor={name} className="text-right">
+      {Title}
+    </Label>
+    <Input id={name} value={value} className="col-span-3" />
+  </div>
+)
+
 const Edit = () => {
     return (
       <Sheet>
         <SheetTrigger asChild>
-          <Button>Edit</Button>
+          <Button variant={'outline'}>Edit</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -27,18 +36,8 @@ const Edit = () => {
             </SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Name
-              </Label>
-              <Input id="name" value="Deepesh Kumar" className="col-span-3" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Username
-              </Label>
-              <Input id="username" value="@deepesh001" className="col-span-3" />
-            </div>
+            {Coloumn("name", "Deepesh Kumar", "Name")}
+            {Coloumn("username", "@deepesh001", "Username")}
           </div>
           <SheetFooter>
             <SheetClose asChild>
