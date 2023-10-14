@@ -131,12 +131,12 @@ const Edit = () => {
           <div className="grid gap-4 py-4">
             {Coloumn("name", "Deepesh Kumar", "Name")}
             {Coloumn("username", "@deepesh0001", "Username")}
-            <div className="grid grid-cols-4 items-center gap-4">
+            {/* <div className="grid grid-cols-4 items-center gap-4">
               <Label className="text-right">
                 Skills
               </Label>
               <Combobox Options={languages}/> 
-            </div>
+            </div> */}
           </div>
           <SheetFooter>
             <SheetClose asChild>

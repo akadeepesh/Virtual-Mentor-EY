@@ -21,6 +21,7 @@ const ProfileHero = () => {
   return (
     <div className='flex flex-row'>
       <div className="flex flex-col align-center">
+        <Edit/>
         <Avatar className='h-40 w-40'>
           {hasImage ? (
             <AvatarImage src={profileImageUrl} alt="@UserImage"/>
@@ -45,26 +46,26 @@ const ProfileHero = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Laguages <AddNew/></CardTitle>
+            <CardTitle>Language <AddNew/></CardTitle>
             {/* <CardDescription>Card Description</CardDescription> */}
           </CardHeader>
           <CardContent>
             <p>Listing Language...</p>
           </CardContent>
           <CardFooter>
-            <p>Current Level</p>
+            <p>Remove or edit</p>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Badges <Edit/></CardTitle>
+            <CardTitle>Education <AddNew/></CardTitle>
             {/* <CardDescription>Card Description</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <p>Badges Showcase</p>
+            <p>Education listing</p>
           </CardContent>
           <CardFooter>
-            <p>Current Level</p>
+            <p>Remove or edit</p>
           </CardFooter>
         </Card>
       </div>
