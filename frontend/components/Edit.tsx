@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Combox from '@/components/Combox';
 import {
   Sheet,
   SheetClose,
@@ -38,6 +39,12 @@ const Edit = () => {
           <div className="grid gap-4 py-4">
             {Coloumn("name", "Deepesh Kumar", "Name")}
             {Coloumn("username", "@deepesh001", "Username")}
+            <div className="flex flex-row">
+              <Label className="text-right">
+                Skills
+              </Label>
+              <Combox/>
+            </div>
           </div>
           <SheetFooter>
             <SheetClose asChild>
