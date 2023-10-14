@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export default function ComboboxDemo({Options}: {Options: {value: string, label: string}[]}) {
+export default function Combobox({Options}: {Options: {value: string, label: string}[]}) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -38,7 +38,7 @@ export default function ComboboxDemo({Options}: {Options: {value: string, label:
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search language..." />
-          <CommandEmpty>No lamguage found.</CommandEmpty>
+          <CommandEmpty>No language found.</CommandEmpty>
           <CommandGroup>
             {Options.map((language: {value: string, label: string}) => (
               <CommandItem

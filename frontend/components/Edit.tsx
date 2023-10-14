@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Combox from '@/components/Combox';
+import Combobox from '@/components/Combobox';
 import {
   Sheet,
   SheetClose,
@@ -56,10 +56,10 @@ const languages = [
     value: "Hindi",
     label: "Haryana",
   },
-  {
-    value: "Hindi",
-    label: "Himachal Pradesh",
-  },
+  // {
+  //   value: "Hindi",
+  //   label: "Himachal Pradesh",
+  // },
   {
     value: "Kannada",
     label: "Karnataka",
@@ -108,10 +108,10 @@ const languages = [
     value: "Tamil",
     label: "Tamil Nadu",
   },
-  {
-    value: "Telugu",
-    label: "Telangana",
-  },
+  // {
+  //   value: "Telugu",
+  //   label: "Telangana",
+  // },
 ]
 
 
@@ -135,7 +135,7 @@ const Edit = () => {
               <Label className="text-right">
                 Skills
               </Label>
-              <Combox Options={languages}/> 
+              <Combobox Options={languages}/> 
             </div>
           </div>
           <SheetFooter>
