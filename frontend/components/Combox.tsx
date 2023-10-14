@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
 
@@ -18,30 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
-
-export default function ComboboxDemo() {
+export default function ComboboxDemo({Options}: {Options: {value: string, label: string}[]}) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -55,19 +30,19 @@ export default function ComboboxDemo() {
           className="w-[200px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            ? Options.find((language: {value: string, label: string}) => language.value === value)?.label
+            : "Select a language..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder="Search language..." />
+          <CommandEmpty>No lamguage found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {Options.map((language: {value: string, label: string}) => (
               <CommandItem
-                key={framework.value}
+                key={language.value}
                 onSelect={(currentValue : string) => {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
@@ -76,10 +51,10 @@ export default function ComboboxDemo() {
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
+                    value === language.value ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {framework.label}
+                {language.label}
               </CommandItem>
             ))}
           </CommandGroup>
