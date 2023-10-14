@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-// import Edit from '@/components/Edit';
+import Edit from '@/components/Edit';
+import AddNew from "@/components/AddNew";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { useUser } from "@clerk/nextjs";
 import {
   Card,
   CardContent,
   CardFooter,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -28,13 +30,11 @@ const ProfileHero = () => {
         </Avatar>
         <div className="">{user?.fullName}</div>
         <div className="">{Username}</div>
-        {/* <div className=""><Edit/></div> */}
       </div>
       <div className="flex justify-evenly">
         <Card>
           <CardHeader>
-            <CardTitle>Badges</CardTitle>
-            {/* <CardDescription>Card Description</CardDescription> */}
+            <CardTitle>Badges <AddNew/></CardTitle>
           </CardHeader>
           <CardContent>
             <p>Badges Showcase</p>
@@ -45,11 +45,11 @@ const ProfileHero = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Badges</CardTitle>
+            <CardTitle>Laguages <AddNew/></CardTitle>
             {/* <CardDescription>Card Description</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <p>Badges Showcase</p>
+            <p>Listing Language...</p>
           </CardContent>
           <CardFooter>
             <p>Current Level</p>
@@ -57,7 +57,7 @@ const ProfileHero = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Badges</CardTitle>
+            <CardTitle>Badges <Edit/></CardTitle>
             {/* <CardDescription>Card Description</CardDescription> */}
           </CardHeader>
           <CardContent>
