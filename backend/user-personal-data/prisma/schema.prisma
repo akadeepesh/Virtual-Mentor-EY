@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt DateTime            @default(now())
+  education EnumUserEducation[]
+  firstName String?
+  id        String              @id @default(cuid())
+  languages EnumUserLanguages[]
+  lastName  String?
+  password  String
+  roles     Json
+  skills    EnumUserSkills[]
+  state     String?
+  updatedAt DateTime            @updatedAt
+  username  String              @unique
+}
+
+enum EnumUserEducation {
+  Btech
+}
+
+enum EnumUserLanguages {
+  Hindi
+}
+
+enum EnumUserSkills {
+  Skills
+}
