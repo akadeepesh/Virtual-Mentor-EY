@@ -9,3 +9,7 @@ class Students(models.Model):
     skills = models.TextField()
     state = models.CharField(max_length=100)
     interests = models.TextField()
+    gender = models.CharField(max_length=100, null=True)
+    level = models.IntegerField(default=0)
+    level_score = models.IntegerField(default=0)
+    quiz_number = models.IntegerField(default=0)
