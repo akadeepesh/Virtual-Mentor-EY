@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.text import slugify
 
 class Students(models.Model):
     full_name = models.CharField(max_length=100)
@@ -11,7 +10,7 @@ class Students(models.Model):
     interests = models.TextField()
     def save(self, *args, **kwargs):
         if not self.username:
-            self.username = slugify(self.full_name)
+            self.username = (self.full_name).split()[1]
             if Students.objects.filter(username=self.username).exists():
                 i = 1
                 while Students.objects.filter(username=f"{self.username}{i}").exists():
