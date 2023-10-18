@@ -19,7 +19,7 @@ const ProfileHero = () => {
   const [Username, setUsername] = useState("deepesh@0001");
 
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row max-w-screen-xl w-screen mx-auto'>
       <div className="flex flex-col align-center">
         <Edit/>
         <Avatar className='h-40 w-40'>
