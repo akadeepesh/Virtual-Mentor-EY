@@ -7,7 +7,6 @@ import {
   Card,
   CardContent,
   CardFooter,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
