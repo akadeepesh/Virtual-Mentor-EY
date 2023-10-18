@@ -2,12 +2,8 @@ import HomeNav from "@/components/HomeNav";
 const HomePage = () => {
   return (
     <div className="flex justify-center">
-      <div className="mx-auto w-screen max-w-screen-xl">
+      <div className="flex justify-center items-center border-b border-gray-600 mx-2">
         <HomeNav />
-        <hr />
-        <div>
-          Initial Screen Content
-        </div>
       </div>
     </div>
   );
