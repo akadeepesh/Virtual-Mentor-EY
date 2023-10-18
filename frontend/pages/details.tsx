@@ -63,7 +63,7 @@ export default function Home() {
       return;
     }
     alert(JSON.stringify(data, null, 4));
-    console.log(data);
+    console.log(data.email);
   }
 
   return (
