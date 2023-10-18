@@ -3,6 +3,7 @@ import { UserButton } from "@clerk/nextjs";
 import { NavigationMenuDemo } from "@/components/Navigation";
 import { useState } from "react";
 import {FaTimes, FaBars} from 'react-icons/fa';
+import { ThemeToggle } from "./ThemeToggle";
 
 const HomeNav = () => {
   const [nav, setNav] = useState(false);
@@ -12,6 +13,7 @@ const HomeNav = () => {
       <div className="hidden md:flex justify-center items-center">
         <div className="flex flex-row gap-8">
           <NavigationMenuDemo />
+          <ThemeToggle className="top-6 right-6 absolute"/>
           <UserButton afterSignOutUrl="/" />
         </div>
         {/* <nav className="space-x-16 mr-20">
