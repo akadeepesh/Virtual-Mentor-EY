@@ -18,13 +18,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
@@ -50,7 +43,6 @@ export default function Home() {
       name: "",
       password: "",
       studentId: "",
-      year: "",
     },
   });
 
@@ -63,7 +55,7 @@ export default function Home() {
       return;
     }
     alert(JSON.stringify(data, null, 4));
-    console.log(data.email);
+    console.log(data);
   }
 
   return (
@@ -86,7 +78,7 @@ export default function Home() {
                 // formStep == 0 -> translateX == 0
                 // formStep == 1 -> translateX == '-100%'
                 animate={{
-                  translateX: `-${formStep * 100}%`,
+                  translateX: `-${formStep * 110}%`,
                 }}
                 transition={{
                   ease: "easeInOut",
@@ -100,7 +92,7 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Full name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your name..." {...field} />
+                        <Input className="ml-1 w-[95%]" placeholder="Enter your name..." {...field} />
                       </FormControl>
                       <FormDescription>
                         This is your public display name.
@@ -117,7 +109,7 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your email..." {...field} />
+                        <Input className="ml-1 w-[95%]" placeholder="Enter your email..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -131,41 +123,11 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Student ID</FormLabel>
                       <FormControl>
-                        <Input
+                        <Input className="ml-1 w-[95%]"
                           placeholder="Enter your student id..."
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* year */}
-                <FormField
-                  control={form.control}
-                  name="year"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Year of study</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a verified email to display" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {[10, 11, 12, 13].map((year) => {
-                            return (
-                              <SelectItem value={year.toString()} key={year}>
-                                Year {year}
-                              </SelectItem>
-                            );
-                          })}
-                        </SelectContent>
-                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -178,7 +140,7 @@ export default function Home() {
                 // formStep == 0 -> translateX == 100%
                 // formStep == 1 -> translateX == 0
                 animate={{
-                  translateX: `${100 - formStep * 100}%`,
+                  translateX: `${110 - formStep * 110}%`,
                 }}
                 style={{
                   translateX: `${100 - formStep * 100}%`,
@@ -195,7 +157,7 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input
+                        <Input className="ml-1 w-[95%]"
                           placeholder="Enter your password..."
                           {...field}
                           type="password"
@@ -213,7 +175,7 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Confirm password</FormLabel>
                       <FormControl>
-                        <Input
+                        <Input className="ml-1 w-[95%]"
                           placeholder="Please confirm your password..."
                           {...field}
                           type="password"
@@ -241,15 +203,13 @@ export default function Home() {
                   })}
                   onClick={() => {
                     // validation
-                    form.trigger(["email", "name", "year", "studentId"]);
+                    form.trigger(["email", "name", "studentId"]);
                     const emailState = form.getFieldState("email");
                     const nameState = form.getFieldState("name");
-                    const yearState = form.getFieldState("year");
                     const idState = form.getFieldState("studentId");
 
                     if (!emailState.isDirty || emailState.invalid) return;
                     if (!nameState.isDirty || nameState.invalid) return;
-                    if (!yearState.isDirty || yearState.invalid) return;
                     if (!idState.isDirty || idState.invalid) return;
 
                     setFormStep(1);
