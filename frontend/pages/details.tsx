@@ -28,7 +28,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "@/src/validators/auth";
+import { registerSchema } from "@/pages/api/auth";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
