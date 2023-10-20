@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
 import {
   Form,
   FormControl,
@@ -18,7 +19,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "@/pages/api/auth";
@@ -33,14 +33,15 @@ const inter = Inter({ subsets: ["latin"] });
 type Input = z.infer<typeof registerSchema>;
 
 export default function Home() {
+  const { user } = useUser();
   const { toast } = useToast();
   const [formStep, setFormStep] = React.useState(0);
   const form = useForm<Input>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       confirmPassword: "",
-      email: "",
-      name: "",
+      email: String(user?.emailAddresses),
+      name: String(user?.fullName),
       password: "",
       studentId: "",
     },
@@ -57,6 +58,7 @@ export default function Home() {
     alert(JSON.stringify(data, null, 4));
     console.log(data);
   }
+
 
   return (
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -92,7 +94,7 @@ export default function Home() {
                     <FormItem>
                       <FormLabel>Full name</FormLabel>
                       <FormControl>
-                        <Input className="ml-1 w-[95%]" placeholder="Enter your name..." {...field} />
+                        <Input className="ml-1 w-[95%]" placeholder="Enter your name..." {...field}/>
                       </FormControl>
                       <FormDescription>
                         This is your public display name.
@@ -207,7 +209,6 @@ export default function Home() {
                     const emailState = form.getFieldState("email");
                     const nameState = form.getFieldState("name");
                     const idState = form.getFieldState("studentId");
-
                     if (!emailState.isDirty || emailState.invalid) return;
                     if (!nameState.isDirty || nameState.invalid) return;
                     if (!idState.isDirty || idState.invalid) return;
