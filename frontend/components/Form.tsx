@@ -60,7 +60,7 @@ export default function Home() {
 
   return (
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-      <Card className="w-[350px]">
+      <Card className="md:w-[600px] sm:w-[400px]">
         <CardHeader>
           <CardTitle>Register</CardTitle>
           <CardDescription>Start the journey with us today.</CardDescription>
@@ -215,7 +215,7 @@ export default function Home() {
                     setFormStep(1);
                   }}
                 >
-                  Next Step
+                  Next
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
                 <Button
