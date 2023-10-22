@@ -40,10 +40,14 @@ export default function Home() {
     resolver: zodResolver(registerSchema),
     defaultValues: {
       confirmPassword: "",
-      email: String(user?.emailAddresses),
-      first_name: String(user?.fullName),
+      // email: String(user?.emailAddresses), --fix
+      email: "",
+      // first_name: String(user?.firstName),
+      first_name: "",
+      // last_name: String(user?.lastName),
+      last_name: "",
+      username: "",
       password: "",
-      studentId: "",
     },
   });
 
@@ -59,7 +63,7 @@ export default function Home() {
     console.log(data);
   }
 
-  type FormFieldName = "email" | "first_name" | "studentId" | "username" | "gender" | "password" | "confirmPassword";
+  type FormFieldName = "email" | "first_name" | "last_name" | "username" | "gender" | "password" | "confirmPassword";
 
   function FormFieldGen(name:FormFieldName, label:string, placeholder:string) {
     return (
@@ -72,9 +76,9 @@ export default function Home() {
             <FormControl>
               <Input className="ml-1 w-[95%]" placeholder={placeholder} {...field}/>
             </FormControl>
-            <FormDescription>
+            {/* <FormDescription>
               This is your public display name.
-            </FormDescription>
+            </FormDescription> */}
             <FormMessage />
           </FormItem>
         )}
@@ -109,54 +113,10 @@ export default function Home() {
                   ease: "easeInOut",
                 }}
               >
-                {/* name */}
-                <FormField
-                  control={form.control}
-                  name="first_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>First name</FormLabel>
-                      <FormControl>
-                        <Input className="ml-1 w-[95%]" placeholder="Enter your name..." {...field}/>
-                      </FormControl>
-                      <FormDescription>
-                        This is your public display name.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* email */}
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input className="ml-1 w-[95%]" placeholder="Enter your email..." {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* student id */}
-                <FormField
-                  control={form.control}
-                  name="studentId"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Student ID</FormLabel>
-                      <FormControl>
-                        <Input className="ml-1 w-[95%]"
-                          placeholder="Enter your student id..."
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {FormFieldGen("first_name", "First Name", "Enter your first name...")}
+                {FormFieldGen("last_name", "Last Name", "Enter your last name...")}
+                {FormFieldGen("username", "Username", "Enter your username...")}
+                {FormFieldGen("email", "Email", "Enter your email...")}
               </motion.div>
               <motion.div
                 className={cn("space-y-3 absolute top-0 left-0 right-0", {
@@ -228,14 +188,15 @@ export default function Home() {
                   })}
                   onClick={() => {
                     // validation
-                    form.trigger(["email", "first_name", "studentId"]);
+                    form.trigger(["email", "first_name", "last_name", "username"])
                     const emailState = form.getFieldState("email");
-                    const nameState = form.getFieldState("first_name");
-                    const idState = form.getFieldState("studentId");
+                    const firstName = form.getFieldState("first_name");
+                    const lastName = form.getFieldState("last_name");
+                    const userName = form.getFieldState("username");
                     if (!emailState.isDirty || emailState.invalid) return;
-                    if (!nameState.isDirty || nameState.invalid) return;
-                    if (!idState.isDirty || idState.invalid) return;
-
+                    if (!firstName.isDirty || firstName.invalid) return;
+                    if (!lastName.isDirty || lastName.invalid) return;
+                    if (!userName.isDirty || userName.invalid) return;
                     setFormStep(1);
                   }}
                 >
