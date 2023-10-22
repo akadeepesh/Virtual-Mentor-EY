@@ -41,7 +41,7 @@ export default function Home() {
     defaultValues: {
       confirmPassword: "",
       email: String(user?.emailAddresses),
-      name: String(user?.fullName),
+      first_name: String(user?.fullName),
       password: "",
       studentId: "",
     },
@@ -59,6 +59,29 @@ export default function Home() {
     console.log(data);
   }
 
+  type FormFieldName = "email" | "first_name" | "studentId" | "username" | "gender" | "password" | "confirmPassword";
+
+  function FormFieldGen(name:FormFieldName, label:string, placeholder:string) {
+    return (
+      <FormField
+        control={form.control}
+        name={name}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <Input className="ml-1 w-[95%]" placeholder={placeholder} {...field}/>
+            </FormControl>
+            <FormDescription>
+              This is your public display name.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    );
+    
+  }
 
   return (
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -89,10 +112,10 @@ export default function Home() {
                 {/* name */}
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="first_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Full name</FormLabel>
+                      <FormLabel>First name</FormLabel>
                       <FormControl>
                         <Input className="ml-1 w-[95%]" placeholder="Enter your name..." {...field}/>
                       </FormControl>
@@ -205,9 +228,9 @@ export default function Home() {
                   })}
                   onClick={() => {
                     // validation
-                    form.trigger(["email", "name", "studentId"]);
+                    form.trigger(["email", "first_name", "studentId"]);
                     const emailState = form.getFieldState("email");
-                    const nameState = form.getFieldState("name");
+                    const nameState = form.getFieldState("first_name");
                     const idState = form.getFieldState("studentId");
                     if (!emailState.isDirty || emailState.invalid) return;
                     if (!nameState.isDirty || nameState.invalid) return;
