@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Head from 'next/head';
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -82,11 +83,13 @@ export default function Home() {
         )}
       />
     );
-    
   }
 
   return (
     <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+      <Head>
+        <title>Create your profile</title>
+      </Head>
       <Card className="md:w-[600px] sm:w-[400px]">
         <CardHeader>
           <CardTitle>Register</CardTitle>
