@@ -59,13 +59,14 @@ export default function Home() {
       });
       return;
     }
+    console.log("form submitted")
     alert(JSON.stringify(data, null, 4));
     console.log(data);
   }
 
   type FormFieldName = "email" | "first_name" | "last_name" | "username" | "gender" | "password" | "confirmPassword";
 
-  function FormFieldGen(name:FormFieldName, label:string, placeholder:string) {
+  function FormFieldGen(name:FormFieldName, label:string, placeholder:string, type:string="") {
     return (
       <FormField
         control={form.control}
@@ -74,11 +75,8 @@ export default function Home() {
           <FormItem>
             <FormLabel>{label}</FormLabel>
             <FormControl>
-              <Input className="ml-1 w-[95%]" placeholder={placeholder} {...field}/>
+              <Input className="ml-1 w-[95%]" placeholder={placeholder} {...field} type={type} autoComplete="on"/>
             </FormControl>
-            {/* <FormDescription>
-              This is your public display name.
-            </FormDescription> */}
             <FormMessage />
           </FormItem>
         )}
@@ -116,7 +114,7 @@ export default function Home() {
                 {FormFieldGen("first_name", "First Name", "Enter your first name...")}
                 {FormFieldGen("last_name", "Last Name", "Enter your last name...")}
                 {FormFieldGen("username", "Username", "Enter your username...")}
-                {FormFieldGen("email", "Email", "Enter your email...")}
+                {FormFieldGen("email", "Email", "Enter your email...","email")}
               </motion.div>
               <motion.div
                 className={cn("space-y-3 absolute top-0 left-0 right-0", {
@@ -135,41 +133,8 @@ export default function Home() {
                 }}
               >
                 {/* password */}
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input className="ml-1 w-[95%]"
-                          placeholder="Enter your password..."
-                          {...field}
-                          type="password"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* confirm password */}
-                <FormField
-                  control={form.control}
-                  name="confirmPassword"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Confirm password</FormLabel>
-                      <FormControl>
-                        <Input className="ml-1 w-[95%]"
-                          placeholder="Please confirm your password..."
-                          {...field}
-                          type="password"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {FormFieldGen("password", "Password", "Enter your password...", "password")}
+                {FormFieldGen("confirmPassword", "Confirm Password", "Please confirm your password...", "password")}
               </motion.div>
               <div className="flex gap-2">
                 <Button
