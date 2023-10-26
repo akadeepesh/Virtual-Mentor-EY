@@ -27,9 +27,9 @@ const DividedForm = () => {
   return (
     <form onSubmit={handleFormSubmit}>
       {section === 1 && (
-        <div>
+        <div className='flex flex-col'>
           <label>First Name</label>
-          <input
+          <input className='w-1/4'
             type="text"
             name="firstName"
             value={formData.firstName}
@@ -37,7 +37,7 @@ const DividedForm = () => {
           />
 
           <label>Last Name</label>
-          <input
+          <input className='w-1/4'
             type="text"
             name="lastName"
             value={formData.lastName}
@@ -45,7 +45,7 @@ const DividedForm = () => {
           />
 
           <label>Email</label>
-          <input
+          <input className='w-1/4'
             type="email"
             name="email"
             value={formData.email}
@@ -57,9 +57,9 @@ const DividedForm = () => {
       )}
 
       {section === 2 && (
-        <div>
+        <div className='flex flex-col'>
           <label>Password</label>
-          <input
+          <input className='w-1/4'
             type="password"
             name="password"
             value={formData.password}
@@ -67,7 +67,7 @@ const DividedForm = () => {
           />
 
           <label>Confirm Password</label>
-          <input
+          <input className='w-1/4'
             type="password"
             name="confirmPassword"
             value={formData.confirmPassword}
