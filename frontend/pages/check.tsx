@@ -1,13 +1,13 @@
 // components/DividedForm.tsx
 import { Input } from "@/components/ui/input";
 import { useUser } from "@clerk/nextjs";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Label } from "@/components/ui/label"
 
 const DividedForm = () => {
   const { user } = useUser();
   const [formData, setFormData] = useState({
-    firstName: String(user?.firstName),
+    firstName: '',
     lastName: '',
     email: '',
     password: '',
@@ -15,6 +15,17 @@ const DividedForm = () => {
   });
   const [section, setSection] = useState(1);
 
+  useEffect(() => {
+    if (user) {
+      setFormData((prevData) => ({
+        ...prevData,
+        firstName: user?.firstName || '',
+        lastName: user?.lastName || '',
+        email: user?.emailAddresses || '',
+      }));
+    }
+  }, [user]);
+  
   const handleNextClick = () => {
     setSection(section + 1);
   };
