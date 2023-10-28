@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Head from "next/head";
+import { ArrowRight } from "lucide-react";
 
 type FormData = {
   firstName: string;
   lastName: string;
   email: string;
+  username: string;
   skills: string;
   gender: string;
 };
@@ -26,6 +28,7 @@ const Form = () => {
     firstName: '',
     lastName: '',
     email: '',
+    username: '',
     skills: '',
     gender: '',
   });
@@ -48,12 +51,24 @@ const Form = () => {
       const formErrors: Partial<FormData> = {};
       if (!formData.firstName.trim()) {
         formErrors.firstName = "First name can't be empty";
+      } else if (formData.firstName.trim().length < 3) {
+        formErrors.firstName = "First name should be more than 3 letters";
       }
       if (!formData.lastName.trim()) {
         formErrors.lastName = "Last name can't be empty";
+      } else if (formData.lastName.trim().length < 3) {
+        formErrors.lastName = "Last name should be more than 3 letters";
       }
       if (!formData.email.trim()) {
         formErrors.email = "Email can't be empty";
+      } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(formData.email.trim())) {
+        formErrors.email = "Email is not valid";
+      }
+      if (!formData.username.trim()){
+        formErrors.username = "Username can't be empty";
+      } else if (formData.username.trim().length < 3) { 
+        formErrors.username = "Username should be more than 3 letters";
+        // If username already present in database then don't accept.
       }
       if (Object.keys(formErrors).length === 0) {
         setErrors({});
@@ -100,11 +115,11 @@ const Form = () => {
   }, [section]);
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center h-screen">
       <Head>
         <title>Create your profile</title>
       </Head>
-      <Card className="w-full md:w-[700px] sm:w-full">
+      <Card className="md:w-[700px] w-3/4">
         <CardHeader>
           <CardTitle>Register</CardTitle>
           <CardDescription>Start the journey with us today.</CardDescription>
@@ -113,16 +128,16 @@ const Form = () => {
           <form onSubmit={handleFormSubmit}>
             {section === 1 && (
               <div className="flex flex-col">
-                <div className="flex flex-wrap">
-                  <div className="w-full md:w-1/2 pr-2">
+                <div className="flex flex-wrap mb-4">
+                  <div className="w-full md:w-1/2 md:pr-2">
                     <Label>First Name</Label>
                     <Input type="text" name="firstName" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} />
-                    {errors.firstName && <span className="text-red-400">{errors.firstName}</span>}
+                    {errors.firstName && <span className="text-red-400 text-sm">{errors.firstName}</span>}
                   </div>
-                  <div className="w-full md:w-1/2 pl-2">
+                  <div className="w-full md:w-1/2 md:pl-2">
                     <Label>Last Name</Label>
                     <Input type="text" name="lastName" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} />
-                    {errors.lastName && <span className="text-red-400">{errors.lastName}</span>}
+                    {errors.lastName && <span className="text-red-400 text-sm">{errors.lastName}</span>}
                   </div>
                 </div>
                 <div className="mb-4">
@@ -130,8 +145,13 @@ const Form = () => {
                   <Input type="text" name="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
                   {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
                 </div>
+                <div className="mb-4">
+                  <Label>Username</Label>
+                  <Input type="text" name="username" value={formData.username} onChange={(e) => setFormData({...formData, username: e.target.value })} />
+                  {errors.username && <span className="text-red-400 text-sm">{errors.username}</span>}
+                </div>
                 <div className="justify-between">
-                  <Button variant={"ghost"} onClick={handleNextClick}>Next</Button>
+                  <Button variant={"ghost"} onClick={handleNextClick}>Next <ArrowRight className="w-4 h-4 ml-2" /></Button>
                 </div>
               </div>
             )}
