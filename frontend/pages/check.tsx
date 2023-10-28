@@ -10,8 +10,8 @@ const DividedForm = () => {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
-    confirmPassword: '',
+    skills: '',
+    gender: '',
   });
   const [section, setSection] = useState(1);
 
@@ -19,8 +19,8 @@ const DividedForm = () => {
     if (user) {
       setFormData((prevData) => ({
         ...prevData,
-        firstName: user?.firstName || '',
-        lastName: user?.lastName || '',
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
         email: user?.emailAddresses || '',
       }));
     }
@@ -45,52 +45,23 @@ const DividedForm = () => {
         {section === 1 && (
           <div className='flex flex-col'>
             <Label>First Name</Label>
-            <Input className="ml-1 w-[95%]" type="text" name="firstName" value={formData.firstName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}/>
-            <input className=''
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-            />
-
+            <Input className="ml-1 w-[95%]" type="text" name="firstName" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}/>
+            <Label>Last Name</Label>
+            <Input className="ml-1 w-[95%]" type="text" name="lastName" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}/>
+            <Label>First Name</Label>
+            <Input className="ml-1 w-[95%]" type="text" name="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}/>
             <label>Last Name</label>
-            <input className=''
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-            />
-
-            <label>Email</label>
-            <input className=''
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-
             <button onClick={handleNextClick}>Next</button>
           </div>
         )}
 
         {section === 2 && (
           <div className='flex flex-col'>
-            <label>Password</label>
-            <input className=''
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            />
+            <Label>Skills</Label>
+            <Input className="ml-1 w-[95%]" type="text" name="skills" onChange={(e) => setFormData({ ...formData, skills: e.target.value })}/>
 
-            <label>Confirm Password</label>
-            <input className=''
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-            />
-
+            <Label>Gender</Label>
+            <Input className="ml-1 w-[95%]" type="text" name="gender" onChange={(e) => setFormData({ ...formData, gender: e.target.value })}/>
             <button onClick={handlePreviousClick}>Previous</button>
             <button type="submit">Submit</button>
           </div>
