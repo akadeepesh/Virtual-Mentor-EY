@@ -30,6 +30,7 @@ const Form = () => {
     gender: '',
   });
   const [section, setSection] = useState<number>(1);
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
     if (user) {
@@ -43,7 +44,26 @@ const Form = () => {
   }, [user]);
 
   const handleNextClick = () => {
-    setSection(section + 1);
+    if (section === 1) {
+      const formErrors: Partial<FormData> = {};
+      if (!formData.firstName.trim()) {
+        formErrors.firstName = "First name can't be empty";
+      }
+      if (!formData.lastName.trim()) {
+        formErrors.lastName = "Last name can't be empty";
+      }
+      if (!formData.email.trim()) {
+        formErrors.email = "Email can't be empty";
+      }
+      if (Object.keys(formErrors).length === 0) {
+        setErrors({});
+        setSection(section + 1);
+      } else {
+        setErrors(formErrors);
+      }
+    } else {
+      setSection(section + 1);
+    }
   };
 
   const handlePreviousClick = () => {
@@ -97,17 +117,22 @@ const Form = () => {
                   <div className="w-full md:w-1/2 pr-2">
                     <Label>First Name</Label>
                     <Input type="text" name="firstName" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} />
+                    {errors.firstName && <span className="text-red-400">{errors.firstName}</span>}
                   </div>
                   <div className="w-full md:w-1/2 pl-2">
                     <Label>Last Name</Label>
                     <Input type="text" name="lastName" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} />
+                    {errors.lastName && <span className="text-red-400">{errors.lastName}</span>}
                   </div>
                 </div>
                 <div className="mb-4">
                   <Label>Email</Label>
                   <Input type="text" name="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+                  {errors.email && <span className="text-red-400 text-sm">{errors.email}</span>}
                 </div>
-                <Button variant={"ghost"} onClick={handleNextClick}>Next</Button>
+                <div className="justify-between">
+                  <Button variant={"ghost"} onClick={handleNextClick}>Next</Button>
+                </div>
               </div>
             )}
 
