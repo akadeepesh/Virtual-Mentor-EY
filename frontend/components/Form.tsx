@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import Head from 'next/head';
+import Head from "next/head";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -60,14 +60,26 @@ export default function Home() {
       });
       return;
     }
-    console.log("form submitted")
+    console.log("form submitted");
     alert(JSON.stringify(data, null, 4));
     console.log(data);
   }
 
-  type FormFieldName = "email" | "first_name" | "last_name" | "username" | "gender" | "password" | "confirmPassword";
+  type FormFieldName =
+    | "email"
+    | "first_name"
+    | "last_name"
+    | "username"
+    | "gender"
+    | "password"
+    | "confirmPassword";
 
-  function FormFieldGen(name:FormFieldName, label:string, placeholder:string, type:string="") {
+  function FormFieldGen(
+    name: FormFieldName,
+    label: string,
+    placeholder: string,
+    type: string = ""
+  ) {
     return (
       <FormField
         control={form.control}
@@ -76,7 +88,13 @@ export default function Home() {
           <FormItem>
             <FormLabel>{label}</FormLabel>
             <FormControl>
-              <Input className="ml-1 w-[95%]" placeholder={placeholder} {...field} type={type} autoComplete="on"/>
+              <Input
+                className="ml-1 w-[95%]"
+                placeholder={placeholder}
+                {...field}
+                type={type}
+                autoComplete="on"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -114,10 +132,18 @@ export default function Home() {
                   ease: "easeInOut",
                 }}
               >
-                {FormFieldGen("first_name", "First Name", "Enter your first name...")}
-                {FormFieldGen("last_name", "Last Name", "Enter your last name...")}
+                {FormFieldGen(
+                  "first_name",
+                  "First Name",
+                  "Enter your first name..."
+                )}
+                {FormFieldGen(
+                  "last_name",
+                  "Last Name",
+                  "Enter your last name..."
+                )}
                 {FormFieldGen("username", "Username", "Enter your username...")}
-                {FormFieldGen("email", "Email", "Enter your email...","email")}
+                {FormFieldGen("email", "Email", "Enter your email...", "email")}
               </motion.div>
               <motion.div
                 className={cn("space-y-3 absolute top-0 left-0 right-0", {
@@ -136,8 +162,18 @@ export default function Home() {
                 }}
               >
                 {/* password */}
-                {FormFieldGen("password", "Password", "Enter your password...", "password")}
-                {FormFieldGen("confirmPassword", "Confirm Password", "Please confirm your password...", "password")}
+                {FormFieldGen(
+                  "password",
+                  "Password",
+                  "Enter your password...",
+                  "password"
+                )}
+                {FormFieldGen(
+                  "confirmPassword",
+                  "Confirm Password",
+                  "Please confirm your password...",
+                  "password"
+                )}
               </motion.div>
               <div className="flex gap-2">
                 <Button
@@ -156,7 +192,12 @@ export default function Home() {
                   })}
                   onClick={() => {
                     // validation
-                    form.trigger(["email", "first_name", "last_name", "username"])
+                    form.trigger([
+                      "email",
+                      "first_name",
+                      "last_name",
+                      "username",
+                    ]);
                     const emailState = form.getFieldState("email");
                     const firstName = form.getFieldState("first_name");
                     const lastName = form.getFieldState("last_name");

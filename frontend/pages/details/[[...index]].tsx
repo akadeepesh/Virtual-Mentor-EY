@@ -1,13 +1,13 @@
-import Form from "@/components/Form";
+import Skills from "@/components/Skills";
 
-import React from 'react'
+import React from "react";
 
 const detail = () => {
   return (
     <div>
-      <Form />
+      <Skills />
     </div>
-  )
-}
+  );
+};
 
-export default detail
+export default detail;
