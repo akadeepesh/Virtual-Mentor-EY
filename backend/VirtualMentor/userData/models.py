@@ -7,7 +7,6 @@ class Students(models.Model):
     email = models.EmailField()
     languages = models.TextField(blank=True, null=True)
     skills = models.TextField(blank=True, null=True)
-    state = models.CharField(max_length=100, blank=True, null=True)
     interests = models.TextField(blank=True, null=True)
     gender = models.CharField(max_length=100, blank=True, null=True)
     level = models.IntegerField(default=0,blank=True, null=True)

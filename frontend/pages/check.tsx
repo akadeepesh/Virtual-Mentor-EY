@@ -19,6 +19,8 @@ type FormData = {
   email: string;
   username: string;
   skills: string;
+  languages: string;
+  interests: string;
   gender: string;
 };
 
@@ -30,6 +32,8 @@ const Form = () => {
     email: '',
     username: '',
     skills: '',
+    languages: '',
+    interests: '',
     gender: '',
   });
   const [section, setSection] = useState<number>(1);
@@ -161,6 +165,14 @@ const Form = () => {
                 <div className="mb-4">
                   <Label>Skills</Label>
                   <Input type="text" name="skills" onChange={(e) => setFormData({ ...formData, skills: e.target.value })} />
+                </div>
+                <div className="mb-4">
+                  <Label>Languages</Label>
+                  <Input type="text" name="languages" onChange={(e) => setFormData({ ...formData, languages: e.target.value })} />
+                </div>
+                <div className="mb-4">
+                  <Label>Interests</Label>
+                  <Input type="text" name="interests" onChange={(e) => setFormData({...formData, interests: e.target.value })} />
                 </div>
                 <div className="mb-4">
                   <Label>Gender</Label>
