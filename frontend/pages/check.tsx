@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Head from "next/head";
 import { ArrowRight } from "lucide-react";
+import SkillsCombo from "@/components/SkillsCombo";
 
 type FormData = {
   firstName: string;
@@ -215,13 +216,14 @@ const Form = () => {
               <div className="flex flex-col">
                 <div className="mb-4">
                   <Label>Skills</Label>
-                  <Input
+                  <SkillsCombo />
+                  {/* <Input
                     type="text"
                     name="skills"
                     onChange={(e) =>
                       setFormData({ ...formData, skills: e.target.value })
                     }
-                  />
+                  /> */}
                 </div>
                 <div className="mb-4">
                   <Label>Languages</Label>
