@@ -1,11 +1,11 @@
-import Skills from "@/components/Skills";
+import SkillsCombo from "@/components/SkillsCombo";
 
 import React from "react";
 
 const detail = () => {
   return (
     <div>
-      <Skills />
+      <SkillsCombo />
     </div>
   );
 };
