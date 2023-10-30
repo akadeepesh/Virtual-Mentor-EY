@@ -47,7 +47,7 @@ export default function ComboboxDemo() {
   return (
     <div>
       {value.map((val) => (
-        <Badge key={val} variant="outline">
+        <Badge key={val} variant="secondary">
           {frameworks.find((framework) => framework.value === val)?.label}
         </Badge>
       ))}
