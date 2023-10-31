@@ -18,68 +18,24 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-  {
-    value: "net.js",
-    label: "Net.js",
-  },
-  {
-    value: "svltekit",
-    label: "SvlteKit",
-  },
-  {
-    value: "nut.js",
-    label: "Nut.js",
-  },
-  {
-    value: "reix",
-    label: "Reix",
-  },
-  {
-    value: "asro",
-    label: "Asro",
-  },
-  {
-    value: "sltekit",
-    label: "SlteKit",
-  },
-  {
-    value: "nt.js",
-    label: "Nt.js",
-  },
-  {
-    value: "rix",
-    label: "Rix",
-  },
-  {
-    value: "aro",
-    label: "Aro",
-  },
-];
-
 export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string[]>([]);
+  const [frameworks, setFrameworks] = React.useState<
+    { value: string; label: string }[]
+  >([]);
+
+  React.useEffect(() => {
+    fetch("/skills.txt")
+      .then((response) => response.text())
+      .then((data) => {
+        const frameworks = data.split("\n").map((framework) => ({
+          value: framework,
+          label: framework,
+        }));
+        setFrameworks(frameworks);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col gap-3">
