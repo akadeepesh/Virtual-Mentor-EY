@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { useUser } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
+import Languages from "@/components/Languages";
 import {
   Card,
   CardContent,
@@ -229,13 +230,14 @@ const Form = () => {
                 </div>
                 <div className="mb-4">
                   <Label>Languages</Label>
-                  <Input
+                  <Languages />
+                  {/* <Input
                     type="text"
                     name="languages"
                     onChange={(e) =>
                       setFormData({ ...formData, languages: e.target.value })
                     }
-                  />
+                  /> */}
                 </div>
                 <div className="mb-4">
                   <Label>Interests</Label>
