@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -21,28 +21,31 @@ import {
 export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string[]>([]);
-  const [skills, setSkills] = React.useState<
-    { value: string; label: string }[]
-  >([]);
+  const [skills, setSkills] = React.useState<string[]>([]);
 
   useEffect(() => {
     fetch("/skills.txt")
       .then((response) => response.text())
       .then((data) => {
-        const skills = data.split("\n").map((skill) => ({
-          value: skill,
-          label: skill,
-        }));
-        setSkills(skills);
+        const skillsList = data.split("\n");
+        setSkills(skillsList);
       });
   }, []);
+
+  const removeValue = (val: string) => {
+    setValue(value.filter((v) => v !== val));
+  };
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex mr-4 gap-2 flex-wrap">
         {value.map((val) => (
-          <Badge className=" h-5" key={val} variant="secondary">
+          <Badge className="text-center text-lg" key={val} variant="secondary">
             {val}
+            <X
+              className="ml-2 h-4 w-4 shrink-0 opacity-50 cursor-pointer"
+              onClick={() => removeValue(val)}
+            />
           </Badge>
         ))}
       </div>
@@ -67,8 +70,8 @@ export default function ComboboxDemo() {
                 <CommandGroup>
                   {skills.map((skill) => (
                     <CommandItem
-                      key={skill.value}
-                      value={skill.value}
+                      key={skill}
+                      value={skill}
                       onSelect={(currentValue) => {
                         setValue(
                           value.includes(currentValue)
@@ -81,12 +84,10 @@ export default function ComboboxDemo() {
                       <Check
                         className={cn(
                           "mr-2 h-4 w-4",
-                          value.includes(skill.value)
-                            ? "opacity-100"
-                            : "opacity-0"
+                          value.includes(skill) ? "opacity-100" : "opacity-0"
                         )}
                       />
-                      {skill.label}
+                      {skill}
                     </CommandItem>
                   ))}
                 </CommandGroup>
