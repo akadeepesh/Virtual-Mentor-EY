@@ -68,28 +68,30 @@ export default function ComboboxDemo() {
                 <CommandInput placeholder="Search skill..." />
                 <CommandEmpty>No skills found.</CommandEmpty>
                 <CommandGroup>
-                  {skills.map((skill) => (
-                    <CommandItem
-                      key={skill}
-                      value={skill}
-                      onSelect={(currentValue) => {
-                        setValue(
-                          value.includes(currentValue)
-                            ? value.filter((val) => val !== currentValue)
-                            : [...value, currentValue]
-                        );
-                        setOpen(false);
-                      }}
-                    >
-                      <Check
-                        className={cn(
-                          "mr-2 h-4 w-4",
-                          value.includes(skill) ? "opacity-100" : "opacity-0"
-                        )}
-                      />
-                      {skill}
-                    </CommandItem>
-                  ))}
+                  {skills
+                    .filter((skill) => !value.includes(skill))
+                    .map((skill) => (
+                      <CommandItem
+                        key={skill}
+                        value={skill}
+                        onSelect={(currentValue) => {
+                          setValue(
+                            value.includes(currentValue)
+                              ? value.filter((val) => val !== currentValue)
+                              : [...value, currentValue]
+                          );
+                          setOpen(false);
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            value.includes(skill) ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                        {skill}
+                      </CommandItem>
+                    ))}
                 </CommandGroup>
               </Command>
             </ScrollArea>
