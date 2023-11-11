@@ -3,13 +3,15 @@ from rest_framework.decorators import api_view
 from .models import Students
 from .serializers import StudentSerializer
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 def getStudent():
     queryset = Students.objects.all()
     serializer = StudentSerializer(queryset, many=True)
     return Response(serializer.data)
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def addStudent(request):
     serializer = StudentSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)

@@ -17,21 +17,23 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import fs from "fs";
 
 export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string[]>([]);
-  const [skills, setSkills] = React.useState<string[]>([]);
+  // const [skills, setSkills] = React.useState<string[]>([]);
 
-  useEffect(() => {
-    fetch("/skills.txt")
-      .then((response) => response.text())
-      .then((data) => {
-        const skillsList = data.split("\n");
-        setSkills(skillsList);
-      });
-  }, []);
-
+  // useEffect(() => {
+  //   fetch("/skills.txt")
+  //     .then((response) => response.text())
+  //     .then((data) => {
+  //       const skillsList = data.split("\n");
+  //       setSkills(skillsList);
+  //     });
+  // }, []);
+  const skills = fs.readFileSync("skills.txt", "utf-8").split("\n");
+  // const options = skills.map((skill) => ({ value: skill, label: skill }));
   const removeValue = (val: string) => {
     setValue(value.filter((v) => v !== val));
   };
