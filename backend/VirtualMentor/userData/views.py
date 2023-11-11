@@ -5,7 +5,7 @@ from .serializers import StudentSerializer
 
 
 @api_view(["GET"])
-def getStudent():
+def getStudent(request):
     queryset = Students.objects.all()
     serializer = StudentSerializer(queryset, many=True)
     return Response(serializer.data)
