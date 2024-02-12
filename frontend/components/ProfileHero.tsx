@@ -1,82 +1,107 @@
-import React, { useState } from 'react';
-import Edit from '@/components/Edit';
+import React, { useState } from "react";
+import Edit from "@/components/Edit";
 import AddNew from "@/components/AddNew";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { useUser } from "@clerk/nextjs";
+import { Badge } from "./ui/badge";
 import {
   Card,
   CardContent,
   CardFooter,
-  CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+
+import { Toggle } from "@/components/ui/toggle";
 
 const ProfileHero = () => {
   const { user } = useUser();
   const hasImage = user?.hasImage;
   const profileImageUrl = user?.imageUrl;
   const [Username, setUsername] = useState("deepesh@0001");
+  const [isLangEdit, setIsLangEdit] = useState(false);
+  const [isEduEdit, setIsEduEdit] = useState(false);
 
   return (
-    <div className='flex flex-row max-w-screen-xl w-screen mx-auto'>
+    <div className="flex flex-row max-w-screen-xl w-screen mx-auto gap-10 mt-10">
       <div className="flex flex-col align-center">
-        <Edit/>
-        <Avatar className='h-40 w-40'>
+        <Avatar className="h-40 w-40">
           {hasImage ? (
-            <AvatarImage src={profileImageUrl} alt="@UserImage"/>
-            ) : (
-              <AvatarImage src="\images\DC.png" alt="@UserImage"/>
-            )}
+            <AvatarImage src={profileImageUrl} alt="@UserImage" />
+          ) : (
+            <AvatarImage src="\images\DC.png" alt="@UserImage" />
+          )}
         </Avatar>
+        <Edit />
         <div className="">{user?.fullName}</div>
         <div className="">{Username}</div>
       </div>
-      <div className="flex justify-evenly">
+      <div className="flex flex-col w-full gap-10">
         <Card>
           <CardHeader>
-            <CardTitle>Badges <AddNew/></CardTitle>
+            <CardTitle className="flex justify-between">
+              <div>Badges</div>
+              <div>
+                <AddNew />
+              </div>
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Badges Showcase</p>
+            <p className="text-muted-foreground">No Current Badges</p>
           </CardContent>
           <CardFooter>
-            <p>Current Level</p>
+            <Badge>Current Level</Badge>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Language <AddNew/></CardTitle>
-            {/* <CardDescription>Card Description</CardDescription> */}
+            <CardTitle className="flex justify-between">
+              <div>Language</div>
+              <div>
+                <AddNew />
+              </div>
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Listing Language...</p>
+            {isLangEdit ? (
+              <Input type="text" placeholder="Add Language" />
+            ) : (
+              <p className="text-muted-foreground rounded-lg">
+                No Languages Added
+              </p>
+            )}
           </CardContent>
           <CardFooter>
-            <p>Remove or edit</p>
+            <Toggle onClick={() => setIsLangEdit(!isLangEdit)}>Edit</Toggle>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Education <AddNew/></CardTitle>
+            <CardTitle className="flex justify-between">
+              <div>Education</div>
+              <div>
+                <AddNew />
+              </div>
+            </CardTitle>
             {/* <CardDescription>Card Description</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <p>Education listing</p>
+            {isEduEdit ? (
+              <Input type="text" placeholder="Add Education" />
+            ) : (
+              <p className="text-muted-foreground rounded-lg">
+                No Education Added
+              </p>
+            )}
           </CardContent>
           <CardFooter>
-            <p>Remove or edit</p>
+            <Toggle onClick={() => setIsEduEdit(!isEduEdit)}>Edit</Toggle>
           </CardFooter>
         </Card>
       </div>
-      {/* <div className='w-7/10'>
-        <div className='badges'>Badges</div>
-        <div className='education'>Education</div>
-        <div className='skills'>Skills</div>
-        <div className='interests'>Interests</div>
-      </div> */}
     </div>
-  )
-}
+  );
+};
 
 export default ProfileHero;

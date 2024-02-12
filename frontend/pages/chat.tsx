@@ -15,7 +15,7 @@ export default function Pg() {
   const messageEndRef = useRef<null | HTMLDivElement>(null);
   const [userData, setUserData] = useState([]);
   const [userDataFetched, setUserDataFetched] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { messages, handleSubmit, input, handleInputChange } = useChat({
     api: "/api/chat",
     initialMessages: [
@@ -47,19 +47,19 @@ export default function Pg() {
     messageEndRef.current?.scrollIntoView({ behavior: "auto" });
   }, [messages]);
 
-  useEffect(() => {
-    const getuserData = async () => {
-      setLoading(true);
-      const url = `https://objective-brown.cmd.outerbase.io/get-words-for-revision?username=${user.user?.username}`;
-      const response = await axios.get(url);
-      setUserData(response.data.response.items[0]);
-      setUserDataFetched(true);
-      setLoading(false);
-    };
-    if (user.isLoaded && !userDataFetched) {
-      getuserData();
-    }
-  }, [user, userDataFetched]);
+  // useEffect(() => {
+  //   const getuserData = async () => {
+  //     setLoading(true);
+  //     const url = `https://objective-brown.cmd.outerbase.io/get-words-for-revision?username=${user.user?.username}`;
+  //     const response = await axios.get(url);
+  //     setUserData(response.data.response.items[0]);
+  //     setUserDataFetched(true);
+  //     setLoading(false);
+  //   };
+  //   if (user.isLoaded && !userDataFetched) {
+  //     getuserData();
+  //   }
+  // }, [user, userDataFetched]);
 
   return (
     <div className="min-h-[90vh] flex flex-col justify-between mt-16 mr-10 ml-10">
