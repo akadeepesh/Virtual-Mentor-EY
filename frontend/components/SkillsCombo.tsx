@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -17,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import fs from "fs";
+// import fs from "fs";
 
 export default function ComboboxDemo() {
   const [open, setOpen] = React.useState(false);
@@ -32,7 +31,7 @@ export default function ComboboxDemo() {
   //       setSkills(skillsList);
   //     });
   // }, []);
-  const skills = fs.readFileSync("skills.txt", "utf-8").split("\n");
+  // const skills = fs.readFileSync("skills.txt", "utf-8").split("\n");
   // const options = skills.map((skill) => ({ value: skill, label: skill }));
   const removeValue = (val: string) => {
     setValue(value.filter((v) => v !== val));
@@ -70,7 +69,7 @@ export default function ComboboxDemo() {
                 <CommandInput placeholder="Search skill..." />
                 <CommandEmpty>No skills found.</CommandEmpty>
                 <CommandGroup>
-                  {skills
+                  {/* {skills
                     .filter((skill) => !value.includes(skill))
                     .map((skill) => (
                       <CommandItem
@@ -93,7 +92,7 @@ export default function ComboboxDemo() {
                         />
                         {skill}
                       </CommandItem>
-                    ))}
+                    ))} */}
                 </CommandGroup>
               </Command>
             </ScrollArea>
