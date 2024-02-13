@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,9 +17,17 @@ import { useUser } from "@clerk/nextjs";
 const Edit = () => {
   const { user } = useUser();
 
-  const [firstName, setFirstName] = useState(String(user?.firstName));
-  const [username, setUsername] = useState(String(user?.username));
-  const [lastName, setLastName] = useState(String(user?.lastName));
+  const [firstName, setFirstName] = useState("");
+  const [username, setUsername] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName || "");
+      setLastName(user.lastName || "");
+      setUsername(user.username || "");
+    }
+  }, [user]);
 
   const params = {
     firstName: String(firstName),
@@ -62,7 +70,7 @@ const Edit = () => {
             </Label>
             <Input
               id="firstName"
-              value={String(user?.firstName)}
+              value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="col-span-3"
             />
@@ -73,7 +81,7 @@ const Edit = () => {
             </Label>
             <Input
               id="lastName"
-              value={String(user?.lastName)}
+              value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               className="col-span-3"
             />
@@ -84,7 +92,7 @@ const Edit = () => {
             </Label>
             <Input
               id="username"
-              value={String(user?.username)}
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="col-span-3"
             />

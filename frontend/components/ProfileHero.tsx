@@ -21,7 +21,7 @@ const ProfileHero = () => {
 
   return (
     <div className="flex flex-row max-w-screen-lg w-screen mx-auto gap-10 mt-10">
-      <div className="flex flex-col align-center">
+      <div className="flex flex-col align-center gap-5">
         <Avatar className="h-40 w-40">
           {user?.hasImage ? (
             <AvatarImage src={user.imageUrl} alt="@UserImage" />
@@ -29,9 +29,14 @@ const ProfileHero = () => {
             <AvatarImage src="\images\DC.png" alt="@UserImage" />
           )}
         </Avatar>
+        <div className="text-lg">
+          <div className="">{user?.fullName}</div>
+          <div className="">@{user?.username}</div>
+          <div className="text-sm">
+            {user?.primaryEmailAddress?.emailAddress}
+          </div>
+        </div>
         <Edit />
-        <div className="">{user?.fullName}</div>
-        <div className="">{user?.username}</div>
       </div>
       <div className="flex flex-col w-full gap-10">
         <Card>
