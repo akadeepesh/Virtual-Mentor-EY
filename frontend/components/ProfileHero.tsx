@@ -12,30 +12,26 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-
 import { Toggle } from "@/components/ui/toggle";
 
 const ProfileHero = () => {
   const { user } = useUser();
-  const hasImage = user?.hasImage;
-  const profileImageUrl = user?.imageUrl;
-  const [Username, setUsername] = useState("deepesh@0001");
   const [isLangEdit, setIsLangEdit] = useState(false);
   const [isEduEdit, setIsEduEdit] = useState(false);
 
   return (
-    <div className="flex flex-row max-w-screen-xl w-screen mx-auto gap-10 mt-10">
+    <div className="flex flex-row max-w-screen-lg w-screen mx-auto gap-10 mt-10">
       <div className="flex flex-col align-center">
         <Avatar className="h-40 w-40">
-          {hasImage ? (
-            <AvatarImage src={profileImageUrl} alt="@UserImage" />
+          {user?.hasImage ? (
+            <AvatarImage src={user.imageUrl} alt="@UserImage" />
           ) : (
             <AvatarImage src="\images\DC.png" alt="@UserImage" />
           )}
         </Avatar>
         <Edit />
         <div className="">{user?.fullName}</div>
-        <div className="">{Username}</div>
+        <div className="">{user?.username}</div>
       </div>
       <div className="flex flex-col w-full gap-10">
         <Card>
@@ -51,7 +47,23 @@ const ProfileHero = () => {
             <p className="text-muted-foreground">No Current Badges</p>
           </CardContent>
           <CardFooter>
-            <Badge>Current Level</Badge>
+            <Badge>"Current Level"</Badge>
+          </CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex justify-between">
+              <div>Skills</div>
+              <div>
+                <AddNew />
+              </div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">No Skills Present</p>
+          </CardContent>
+          <CardFooter>
+            <Badge>Skill List</Badge>
           </CardFooter>
         </Card>
         <Card>
