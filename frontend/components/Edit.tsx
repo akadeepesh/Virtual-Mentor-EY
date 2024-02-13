@@ -1,8 +1,8 @@
-import React from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import Combobox from '@/components/Combobox';
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Combobox from "@/components/Combobox";
 import {
   Sheet,
   SheetClose,
@@ -12,16 +12,16 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
-
-const Coloumn = (id: string , value: string, Title : string) => (
+} from "@/components/ui/sheet";
+import { useUser } from "@clerk/nextjs";
+const Coloumn = (id: string, value: string, Title: string) => (
   <div className="grid grid-cols-4 items-center gap-4">
     <Label htmlFor={id} className="text-right">
       {Title}
     </Label>
     <Input id={id} value={value} className="col-span-3" />
   </div>
-)
+);
 
 const languages = [
   {
@@ -112,39 +112,51 @@ const languages = [
   //   value: "Telugu",
   //   label: "Telangana",
   // },
-]
-
+];
 
 const Edit = () => {
-    return (
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant={'outline'}>Edit</Button>
-        </SheetTrigger>
-        <SheetContent side={"left"}>
-          <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-            <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
-            </SheetDescription>
-          </SheetHeader>
-          <div className="grid gap-4 py-4">
-            {Coloumn("name", "Deepesh Kumar", "Name")}
-            {Coloumn("username", "@deepesh0001", "Username")}
-            {/* <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right">
-                Skills
-              </Label>
-              <Combobox Options={languages}/> 
-            </div> */}
+  const { user } = useUser();
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant={"outline"}>Edit</Button>
+      </SheetTrigger>
+      <SheetContent side={"left"}>
+        <SheetHeader>
+          <SheetTitle>Edit profile</SheetTitle>
+          <SheetDescription>
+            Make changes to your profile here. Click save when you're done.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Name
+            </Label>
+            <Input
+              id="name"
+              value={String(user?.firstName)}
+              className="col-span-3"
+            />
           </div>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
-            </SheetClose>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
-  )
-}  
-export default Edit
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Username
+            </Label>
+            <Input
+              id="username"
+              value={String(user?.username)}
+              className="col-span-3"
+            />
+          </div>
+        </div>
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button type="submit">Save changes</Button>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+};
+export default Edit;

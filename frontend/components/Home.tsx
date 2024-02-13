@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 const HomePage: React.FC = () => {
   const { user } = useUser();
@@ -14,7 +15,9 @@ const HomePage: React.FC = () => {
           <p className="text-lg text-gray-600">
             This is the home page and still building, Thanks for your paitence.
           </p>
-          <Button className="px-4 py-2 mt-4">Get Started</Button>
+          <Link href={"/profile"}>
+            <Button className="px-4 py-2 mt-4">Get Started</Button>
+          </Link>
         </div>
       </div>
     </div>
