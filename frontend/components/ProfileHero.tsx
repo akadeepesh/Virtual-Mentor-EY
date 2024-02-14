@@ -20,8 +20,8 @@ const ProfileHero = () => {
   const [isEduEdit, setIsEduEdit] = useState(false);
 
   return (
-    <div className="flex flex-row max-w-screen-lg w-screen mx-auto gap-10 mt-10">
-      <div className="flex flex-col align-center gap-5">
+    <div className="flex flex-col sm:flex-row max-w-screen-lg w-screen mx-auto gap-10 mt-10">
+      <div className="flex flex-col align-center items-center gap-5">
         <Avatar className="h-40 w-40">
           {user?.hasImage ? (
             <AvatarImage src={user.imageUrl} alt="@UserImage" />

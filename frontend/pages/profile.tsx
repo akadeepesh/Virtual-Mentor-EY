@@ -15,7 +15,7 @@ const Profile = () => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="flex justify-center items-center border-b border-gray-600 mx-2">
+      <div>
         <HomeNav />
       </div>
       <ProfileHero />
