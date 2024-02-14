@@ -30,9 +30,9 @@ const Edit = () => {
   }, [user]);
 
   const params = {
-    firstName: String(firstName),
-    lastName: String(lastName),
-    username: String(username),
+    firstName: firstName || "Unauthorized",
+    lastName: lastName || "Unauthorized",
+    username: username || "Unauthorized",
   };
 
   const updatedUser = async () => {

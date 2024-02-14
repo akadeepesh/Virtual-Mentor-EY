@@ -5,14 +5,10 @@ import Head from "next/head";
 const HomePage = () => {
   return (
     <div>
-      <div className="flex justify-center">
-        <Head>
-          <title>Home</title>
-        </Head>
-        <div>
-          <HomeNav />
-        </div>
-      </div>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <HomeNav />
       <Home />
     </div>
   );
