@@ -6,7 +6,7 @@ const LandingNav = () => {
     <nav className="flex md:mt-4 justify-between h-20 items-center mx-auto max-w-screen-xl w-screen">
       <a
         href="/"
-        className="font-bold text-xl md:text-2xl mx-1 md:mx-4 hover:text-slate-200 duration-200"
+        className="font-bold text-xl md:text-2xl mx-1 md:mx-4 duration-200"
       >
         VirtualMentor
       </a>

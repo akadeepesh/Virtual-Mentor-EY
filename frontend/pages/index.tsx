@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>VirtualMentor | Home</title>
       </Head>
       <HomeNav />
       <Home />

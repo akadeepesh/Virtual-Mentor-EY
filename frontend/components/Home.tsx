@@ -1,13 +1,8 @@
 import React from "react";
-import { Button } from "./ui/button";
-// import { useUser } from "@clerk/nextjs";
-// import Link from "next/link";
 import { SparklesCore } from "./ui/sparkles";
 import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
-import { Progress } from "@/components/ui/progress";
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+
 const HomePage: React.FC = () => {
-  // const { user } = useUser();
   const wordsOne = [
     {
       text: "Make",
@@ -42,13 +37,6 @@ const HomePage: React.FC = () => {
           VirtualMentor
         </div>
         <br />
-        <div className="border rounded-xl flex flex-col items-start">
-          <Progress className="h-1 ml-4 mt-2 w-[90%]" value={33} />
-          <Button variant={"link"} className="text-base flex flex-row">
-            <div className="">Complete Your Profile</div>
-            <ChevronRightIcon className="mt-1" />
-          </Button>
-        </div>
       </div>
     </div>
   );
