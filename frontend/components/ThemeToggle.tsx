@@ -14,7 +14,7 @@ export function ThemeToggle({
   };
   return (
     <div className={className} {...props}>
-      <Button variant="outline" size="icon" onClick={toggleTheme}>
+      <Button variant="ghost" size="icon" onClick={toggleTheme}>
         {theme === "dark" ? <SunIcon /> : <MoonIcon />}
       </Button>
     </div>

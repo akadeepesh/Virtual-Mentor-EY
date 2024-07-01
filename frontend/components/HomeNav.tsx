@@ -1,4 +1,3 @@
-import { UserButton } from "@clerk/nextjs";
 import { NavigationMenuDemo } from "@/components/Navigation";
 import { ThemeToggle } from "./ThemeToggle";
 import { useRouter } from "next/router";
