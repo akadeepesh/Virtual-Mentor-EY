@@ -1,17 +1,17 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Form,
   FormControl,
@@ -20,13 +20,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
+} from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { toast } from "@/components/ui/use-toast"
+} from "@/components/ui/popover";
+import { toast } from "@/components/ui/use-toast";
 
 const languages = [
   { label: "English", value: "en" },
@@ -38,18 +38,18 @@ const languages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
-] as const
+] as const;
 
 const FormSchema = z.object({
   language: z.string({
     required_error: "Please select a language.",
   }),
-})
+});
 
 export default function ComboboxForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-  })
+  });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -59,7 +59,7 @@ export default function ComboboxForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -101,7 +101,7 @@ export default function ComboboxForm() {
                           value={language.label}
                           key={language.value}
                           onSelect={() => {
-                            form.setValue("language", language.value)
+                            form.setValue("language", language.value);
                           }}
                         >
                           <Check
@@ -129,5 +129,5 @@ export default function ComboboxForm() {
         {/* <Button type="submit">Submit</Button> */}
       </form>
     </Form>
-  )
+  );
 }
